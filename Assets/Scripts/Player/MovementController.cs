@@ -42,6 +42,7 @@ public class MovementController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        Debug.Log("move");
         horizontalInput = context.ReadValue<Vector2>().x;
     }
 

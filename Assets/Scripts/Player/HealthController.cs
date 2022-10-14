@@ -34,22 +34,6 @@ public class HealthController : MonoBehaviour
     {
         canvasTransform = GameObject.Find("Canvas").transform;
         UpdateHealth();
-        StartCoroutine("TestHealth");
-    }
-
-    IEnumerator TestHealth()
-    {
-        Damage(1);
-        yield return new WaitForSeconds(1);
-        Damage(1);
-        yield return new WaitForSeconds(1);
-        Damage(2);
-        yield return new WaitForSeconds(1);
-        Heal(2);
-        yield return new WaitForSeconds(1);
-        Heal(1);
-        yield return new WaitForSeconds(1);
-        Damage(5);
     }
 
     public void Damage(int health)
