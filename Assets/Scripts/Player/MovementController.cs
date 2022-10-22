@@ -26,6 +26,14 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         rigidBody.velocity = new Vector2(horizontalInput * movementSpeed, rigidBody.velocity.y);
+        if (horizontalInput < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (horizontalInput > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
         if (jumpCount > 0)
         {
             if (IsGrounded())
@@ -37,12 +45,11 @@ public class MovementController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
+        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Obstacle"));
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        Debug.Log("move");
         horizontalInput = context.ReadValue<Vector2>().x;
     }
 

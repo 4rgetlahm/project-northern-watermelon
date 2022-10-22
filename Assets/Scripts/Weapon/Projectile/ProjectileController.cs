@@ -18,7 +18,6 @@ public class ProjectileController : MonoBehaviour
     public void SetDirection(Vector3 direction)
     {
         this.direction = direction;
-        transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
     }
 
     public void ApplyOnHitBuffs(GameObject target)

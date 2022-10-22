@@ -15,6 +15,7 @@ public class PistolController : MonoBehaviour, IWeaponController
         GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
         ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
         Vector3 direction = projectileSpawnPoint.position - transform.position;
+        Debug.Log(direction);
         projectileController.SetDirection(direction.normalized);
         projectileController.buffs = buffs;
         projectileController.ApplyProjectileBuffs();
