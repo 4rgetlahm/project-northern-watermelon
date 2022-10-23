@@ -10,9 +10,14 @@ public class PathfinderMovement : MonoBehaviour
 
     [SerializeField]
     private float speed = 200f;
+    [SerializeField]
+    private bool canJump = false;
+    [SerializeField]
+    private float jumpForce = 400f;
     private float nextWaypointDistance = 3f;
     private Seeker seeker;
     private Rigidbody2D rigidBody;
+    private BoxCollider2D boxCollider;
 
     private Transform _target = null;
     public Transform Target
@@ -32,18 +37,24 @@ public class PathfinderMovement : MonoBehaviour
         }
     }
 
-    void ResetPath()
-    {
-        currentPath = null;
-        currentWaypoint = 0;
-    }
-
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rigidBody = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Obstacle"));
+    }
+
+    void ResetPath()
+    {
+        currentPath = null;
+        currentWaypoint = 0;
     }
 
     void UpdatePath()
@@ -81,9 +92,15 @@ public class PathfinderMovement : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)currentPath.vectorPath[currentWaypoint] - rigidBody.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
+        Vector2 force = direction * speed;
+        rigidBody.velocity = new Vector2(force.x, rigidBody.velocity.y);
 
         rigidBody.AddForce(force);
+        Debug.Log(IsGrounded());
+        if (canJump && direction.y > 0.5f && IsGrounded())
+        {
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+        }
 
         float distance = Vector2.Distance(rigidBody.position, currentPath.vectorPath[currentWaypoint]);
 
