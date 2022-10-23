@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 7644634505381950745}
   - component: {fileID: 7644634505381950744}
   - component: {fileID: 7644634505381950748}
-  - component: {fileID: 7644634505381950738}
+  - component: {fileID: 616211448989129958}
+  - component: {fileID: 1038611185707124729}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -179,7 +180,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &7644634505381950738
+--- !u!114 &616211448989129958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,6 +189,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 7644634505381950747}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f167bb462c39d584e86a04b3ec960ba0, type: 3}
+  m_Script: {fileID: 11500000, guid: b4dacc63e780085488ae46a67d948e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerRadius: 5
+  attackRadius: 1.5
+  delayBetweenAttacks: 1
+  state: 0
+--- !u!114 &1038611185707124729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7644634505381950747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0198a2483d5062544b47fbcc739617eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistolController : MonoBehaviour, IWeaponController
+public class RocketLauncherController : MonoBehaviour, IWeaponController
 {
+
     [SerializeField]
     private GameObject projectilePrefab;
     [SerializeField]
@@ -27,6 +28,7 @@ public class PistolController : MonoBehaviour, IWeaponController
         projectileController.SetDirection(direction.normalized);
         projectileController.buffs = buffs;
         projectileController.ApplyProjectileBuffs();
+
     }
 
     public void AddBuff(IWeaponBuff buff)

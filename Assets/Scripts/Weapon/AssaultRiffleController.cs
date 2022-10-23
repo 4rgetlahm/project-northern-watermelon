@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistolController : MonoBehaviour, IWeaponController
+public class AssaultRiffleController : MonoBehaviour, IWeaponController
 {
     [SerializeField]
     private GameObject projectilePrefab;

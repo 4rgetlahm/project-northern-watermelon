@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 731805803267848887}
   - component: {fileID: 731805803267848886}
   - component: {fileID: 731805803267848884}
+  - component: {fileID: 1295453487437491845}
   - component: {fileID: 731805803267848885}
   - component: {fileID: 731805803267848891}
   m_Layer: 0
@@ -75,6 +76,19 @@ MonoBehaviour:
   multiJumpCount: 1
   movementSpeed: 10
   jumpForce: 25
+--- !u!114 &1295453487437491845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731805803267848880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf0773ea0963db4b8bc1bcf15ea24b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSprite: {fileID: 731805803406668776}
 --- !u!114 &731805803267848885
 MonoBehaviour:
   m_ObjectHideFlags: 0
