@@ -2,17 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ProjectileType
-{
-    Rocket,
-    Bullet,
-    Laser
-}
 
 public class ProjectileController : MonoBehaviour
 {
-    [SerializeField]
-    private ProjectileType projectileType;
     [SerializeField]
     private float speed = 10f;
     [SerializeField]
@@ -46,19 +38,6 @@ public class ProjectileController : MonoBehaviour
     }
     void Start()
     {
-        switch (projectileType)
-        {
-            case ProjectileType.Laser:
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, direction);
-                if (hit.collider != null)
-                {
-                    ApplyOnHitBuffs(hit.collider.gameObject);
-                }
-                Destroy(gameObject);
-                break;
-            default:
-                break;
-        }
         ApplyProjectileBuffs();
         Destroy(gameObject, lifeTime);
     }
@@ -68,6 +47,7 @@ public class ProjectileController : MonoBehaviour
         if (target.tag == "Enemy")
         {
             ApplyOnHitBuffs(target);
+            target.GetComponent<EnemyController>().Hit(damage);
         }
         Destroy(gameObject);
     }

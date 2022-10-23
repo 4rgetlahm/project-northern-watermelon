@@ -6,11 +6,12 @@ public enum EnemyState
 {
     Idle,
     GoingToSpawn,
+    Patrol,
     Chase,
     Attack
 }
 
-public class MeleeEnemyController : MonoBehaviour
+public class MeleeEnemyAI : MonoBehaviour
 {
     [SerializeField]
     private float triggerRadius = 5f;
@@ -19,24 +20,15 @@ public class MeleeEnemyController : MonoBehaviour
     [SerializeField]
     private float delayBetweenAttacks = 1f;
     private float lastAttackTime = 0f;
-    private EnemyState _state = EnemyState.Idle;
-    private EnemyState State
-    {
-        get
-        {
-            return _state;
-        }
-        set
-        {
-            _state = value;
-            ChangeAnimation(value.ToString());
-        }
-    }
+    [SerializeField]
+    private EnemyState state = EnemyState.Idle;
 
     private Transform playerTransform;
     private EnemyHealth enemyHealth;
     private PathfinderMovement pathfinderMovement;
+
     private PlayerController playerController;
+
     private Vector2 spawnPosition;
 
     void Start()
@@ -50,28 +42,30 @@ public class MeleeEnemyController : MonoBehaviour
         spawnPosition = transform.position;
     }
 
+    // Update is called once per frame
     void FixedUpdate()
     {
 
-        switch (State)
+        switch (state)
         {
             case EnemyState.Idle:
                 if (Vector2.Distance(spawnPosition, playerTransform.position) < triggerRadius)
                 {
-                    State = EnemyState.Chase;
+                    state = EnemyState.Chase;
                 }
                 break;
             case EnemyState.GoingToSpawn:
                 if (Vector2.Distance(spawnPosition, transform.position) < 1f)
                 {
-                    State = EnemyState.Idle;
+                    state = EnemyState.Idle;
                 }
                 break;
+            case EnemyState.Patrol:
+                break;
             case EnemyState.Chase:
-                Debug.Log("Distance to player: " + Vector2.Distance(playerTransform.position, transform.position));
                 if (Vector2.Distance(spawnPosition, playerTransform.position) > triggerRadius)
                 {
-                    State = EnemyState.GoingToSpawn;
+                    state = EnemyState.GoingToSpawn;
                     pathfinderMovement.Target = null;
                     pathfinderMovement.SetDestination(spawnPosition);
                     return;
@@ -79,7 +73,7 @@ public class MeleeEnemyController : MonoBehaviour
                 else if (Vector2.Distance(transform.position, playerTransform.position) <= attackRadius)
                 {
                     pathfinderMovement.Target = null;
-                    State = EnemyState.Attack;
+                    state = EnemyState.Attack;
                     return;
                 }
                 if (pathfinderMovement.Target != playerTransform)
@@ -95,7 +89,7 @@ public class MeleeEnemyController : MonoBehaviour
                 }
                 if (Vector2.Distance(playerTransform.position, transform.position) >= attackRadius)
                 {
-                    State = EnemyState.Chase;
+                    state = EnemyState.Chase;
                 }
                 break;
             default:
@@ -110,12 +104,6 @@ public class MeleeEnemyController : MonoBehaviour
         {
             playerController.Hit();
         }
-    }
-
-    private void ChangeAnimation(string animationName)
-    {
-        Debug.Log("ChangeAnimation: " + animationName);
-        GetComponent<Animator>().Play(animationName);
     }
 
     public void OnDamageTaken(object sender, DamageTakenArgs e)

@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class AssaultRiffleController : MonoBehaviour, IWeaponController
 {
+
     [SerializeField]
-    private GameObject projectilePrefab;
+    private LineRenderer lineRenderer;
     [SerializeField]
-    private Transform projectileSpawnPoint;
+    private Transform projectileDirection;
     [SerializeField]
     private float fireRate = 0.5f;
+    [SerializeField]
+    private float range = 100f;
+    [SerializeField]
+    private int damage = 1;
     private float lastFireTime = 0f;
     private List<IWeaponBuff> buffs = new List<IWeaponBuff>();
 
@@ -20,13 +25,40 @@ public class AssaultRiffleController : MonoBehaviour, IWeaponController
             return;
         }
         lastFireTime = Time.time;
-        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
-        ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
-        Vector3 direction = projectileSpawnPoint.position - transform.position;
-        Debug.Log(direction);
-        projectileController.SetDirection(direction.normalized);
-        projectileController.buffs = buffs;
-        projectileController.ApplyProjectileBuffs();
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, (projectileDirection.position - transform.position).normalized, range);
+        if (hit.collider != null)
+        {
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, hit.point);
+            StartCoroutine(FireAnimation());
+            if (hit.collider.gameObject.tag == "Enemy")
+            {
+                hit.collider.gameObject.GetComponent<EnemyController>().Hit(damage);
+                ApplyOnHitEffects(hit.collider.gameObject);
+            }
+            return;
+        }
+        else
+        {
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, (projectileDirection.position - transform.position).normalized * range);
+            StartCoroutine(FireAnimation());
+        }
+    }
+
+    IEnumerator FireAnimation()
+    {
+        lineRenderer.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        lineRenderer.enabled = false;
+    }
+
+    public void ApplyOnHitEffects(GameObject target)
+    {
+        foreach (IWeaponBuff buff in buffs)
+        {
+            buff.ApplyOnHit(target);
+        }
     }
 
     public void AddBuff(IWeaponBuff buff)
