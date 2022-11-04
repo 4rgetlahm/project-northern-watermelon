@@ -19,10 +19,11 @@ public class MovementController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
-    //animator variables
-    [SerializeField]
-    Animator anim;
-    //bool moving = false;
+    public event System.Action OnJump;
+    public event System.Action OnLand;
+    public event System.Action OnMove;
+    public event System.Action OnStop;
+
 
     void Awake()
     {
@@ -32,8 +33,6 @@ public class MovementController : MonoBehaviour
 
     void FixedUpdate()
     {
-        IsGrounded(); //need for landing animation
-
         rigidBody.velocity = new Vector2(horizontalInput * movementSpeed, rigidBody.velocity.y);
         if (horizontalInput < 0)
         {
@@ -43,40 +42,31 @@ public class MovementController : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        if (jumpCount > 0)
+        if (jumpCount > 0 && rigidBody.velocity.y <= 0)
         {
             if (IsGrounded())
             {
                 jumpCount = 0;
-            }
-            else //falling
-            {
-                Debug.Log("falling");
-                
+                OnLand?.Invoke();
             }
         }
     }
 
     private bool IsGrounded()
     {
-        //landing animation
-        bool isGrounded = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Obstacle"));
-        anim.SetBool("Jumping_Up", false);
-        anim.SetBool("Landing", isGrounded);
-        
-        return isGrounded;
+        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Obstacle"));
     }
 
     public void Move(InputAction.CallbackContext context)
     {
         horizontalInput = context.ReadValue<Vector2>().x;
 
-        bool walking = Convert.ToBoolean(Math.Abs(horizontalInput)); //1 - right, -1 - left, 0 - idle
-            
-
-        //Debug.Log("movement = "+horizontalInput);
-        anim.SetBool("Walking", walking);
-        //anim.SetFloat("Movement", horizontalInput);
+        if (horizontalInput == 0)
+        {
+            OnStop?.Invoke();
+            return;
+        }
+        OnMove?.Invoke();
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -89,11 +79,9 @@ public class MovementController : MonoBehaviour
         {
             return;
         }
-        Debug.Log("jump");
-        anim.SetBool("Jumping_Up", true);
-        anim.SetBool("Landing", false);
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0); //reset y velocity so the jump is from a "standing position"
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
         jumpCount++;
+        OnJump?.Invoke();
     }
 }
