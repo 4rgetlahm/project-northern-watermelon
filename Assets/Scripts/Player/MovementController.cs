@@ -57,14 +57,8 @@ public class MovementController : MonoBehaviour
         isInAir = !IsGrounded();
         if (wasInAir && !isInAir)
         {
-            isInAir = false;
             jumpCount = 0;
             OnLand?.Invoke();
-        }
-        else if (!wasInAir && isInAir)
-        {
-            isInAir = true;
-            OnJump?.Invoke();
         }
     }
 

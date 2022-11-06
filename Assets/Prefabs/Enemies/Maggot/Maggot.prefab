@@ -531,9 +531,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f94d994dd6e32a49abd01a513d3a5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  canJump: 0
-  jumpForce: 5
+  speed: 7
+  canJump: 1
+  jumpForce: 3
 --- !u!212 &7644634505381950750
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -601,7 +601,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

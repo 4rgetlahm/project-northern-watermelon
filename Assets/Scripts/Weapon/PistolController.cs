@@ -20,7 +20,7 @@ public class PistolController : MonoBehaviour, IWeaponController
             return;
         }
         lastFireTime = Time.time;
-        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
         Vector3 direction = projectileSpawnPoint.position - transform.position;
         Debug.Log(direction);
