@@ -19,6 +19,8 @@ public class MovementController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
+    private bool isInAir = false;
+
     public event System.Action OnJump;
     public event System.Action OnLand;
     public event System.Action OnMove;
@@ -42,19 +44,24 @@ public class MovementController : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        if (jumpCount > 0 && rigidBody.velocity.y <= 0)
+        bool wasInAir = isInAir;
+        isInAir = !IsGrounded();
+        if (wasInAir && !isInAir)
         {
-            if (IsGrounded())
-            {
-                jumpCount = 0;
-                OnLand?.Invoke();
-            }
+            isInAir = false;
+            jumpCount = 0;
+            OnLand?.Invoke();
+        }
+        else if (!wasInAir && isInAir)
+        {
+            isInAir = true;
+            OnJump?.Invoke();
         }
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Obstacle"));
+        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.2f, LayerMask.GetMask("Obstacle"));
     }
 
     public void Move(InputAction.CallbackContext context)
