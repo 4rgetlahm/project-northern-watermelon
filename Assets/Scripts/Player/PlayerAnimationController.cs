@@ -15,6 +15,7 @@ public class PlayerAnimationController : MonoBehaviour
         movementController.OnLand += Land;
         movementController.OnMove += Move;
         movementController.OnStop += Stop;
+        movementController.OnFall += Falling;
     }
 
     void Jump()
@@ -22,6 +23,12 @@ public class PlayerAnimationController : MonoBehaviour
         Debug.Log("Jump");
         animator.SetBool("Jumping_Up", true);
         animator.SetBool("Landing", false);
+    }
+
+    void Falling()
+    {
+        Debug.Log("Falling");
+        animator.SetBool("Jumping_Up", false);
     }
 
     void Land()

@@ -47,3 +47,6 @@ TagManager:
   - name: Player
     uniqueID: 1237782787
     locked: 0
+  - name: Maggot
+    uniqueID: 2573080521
+    locked: 0

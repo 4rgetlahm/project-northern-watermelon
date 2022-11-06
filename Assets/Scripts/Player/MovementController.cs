@@ -23,7 +23,9 @@ public class MovementController : MonoBehaviour
     public event System.Action OnLand;
     public event System.Action OnMove;
     public event System.Action OnStop;
+    public event System.Action OnFall;
 
+    private bool isInAir = false;
 
     void Awake()
     {
@@ -34,6 +36,13 @@ public class MovementController : MonoBehaviour
     void FixedUpdate()
     {
         rigidBody.velocity = new Vector2(horizontalInput * movementSpeed, rigidBody.velocity.y);
+
+
+        if (!IsGrounded()) //for jump cancelation
+        {
+            OnFall?.Invoke();
+        }
+
         if (horizontalInput < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
@@ -42,19 +51,26 @@ public class MovementController : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
-        if (jumpCount > 0 && rigidBody.velocity.y <= 0)
+
+        bool wasInAir = isInAir;
+
+        isInAir = !IsGrounded();
+        if (wasInAir && !isInAir)
         {
-            if (IsGrounded())
-            {
-                jumpCount = 0;
-                OnLand?.Invoke();
-            }
+            isInAir = false;
+            jumpCount = 0;
+            OnLand?.Invoke();
+        }
+        else if (!wasInAir && isInAir)
+        {
+            isInAir = true;
+            OnJump?.Invoke();
         }
     }
 
     private bool IsGrounded()
     {
-        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Obstacle"));
+        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.2f, LayerMask.GetMask("Obstacle"));
     }
 
     public void Move(InputAction.CallbackContext context)
