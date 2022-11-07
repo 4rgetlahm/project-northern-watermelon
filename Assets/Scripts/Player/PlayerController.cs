@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private SpriteRenderer playerSprite;
+    private SpriteRenderer[] playerSprites;
 
     private HealthController healthController;
 
@@ -28,9 +28,18 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator HitAnimation()
     {
-        Color originalColor = playerSprite.color;
-        playerSprite.color = Color.red;
+        foreach (SpriteRenderer sprite in playerSprites)
+        {
+            sprite.color = Color.red;
+        }
+        //Color originalColor = playerSprite.color;
+        //playerSprite.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        playerSprite.color = originalColor;
+
+        foreach (SpriteRenderer sprite in playerSprites)
+        {
+            sprite.color = Color.white;
+        }
+        //playerSprite.color = originalColor;
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8830694658974217967}
   - component: {fileID: 1467554089404549325}
+  - component: {fileID: 1272689906082066748}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1272689906082066748
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4300485175700784424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 694636e5316a7d74db4bf903ec127d8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6989285600923119053
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,3 +185,4 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2023158346040027245, guid: eb45ba670c029064cb9f60f33cef139a, type: 3}
   projectileSpawnPoint: {fileID: 4006410881001465466}
   fireRate: 0.1
+  anim: {fileID: 1272689906082066748}

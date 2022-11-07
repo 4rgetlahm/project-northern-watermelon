@@ -10,6 +10,8 @@ public class PistolController : MonoBehaviour, IWeaponController
     private Transform projectileSpawnPoint;
     [SerializeField]
     private float fireRate = 0.5f;
+    [SerializeField]
+    private Animator anim;
     private float lastFireTime = 0f;
     private List<IWeaponBuff> buffs = new List<IWeaponBuff>();
 
@@ -19,6 +21,9 @@ public class PistolController : MonoBehaviour, IWeaponController
         {
             return;
         }
+        //animation
+        anim.Play("shoot");
+
         lastFireTime = Time.time;
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
