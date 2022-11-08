@@ -19,6 +19,8 @@ public class MovementController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
+    private bool isInAir = false;
+
     public event System.Action OnJump;
     public event System.Action OnLand;
     public event System.Action OnMove;
