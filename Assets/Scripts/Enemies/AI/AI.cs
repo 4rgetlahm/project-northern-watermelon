@@ -35,7 +35,6 @@ public class AI : MonoBehaviour
     protected void SetState(dynamic state)
     {
         this.state = state;
-        Debug.Log("ffaaa  " + state);
         OnAIStateChange?.Invoke(new AIStateArgs(state));
     }
 
