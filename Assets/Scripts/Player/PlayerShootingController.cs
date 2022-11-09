@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class PlayerShootingController : MonoBehaviour
 {
-    public IWeaponController equippedWeaponController;
+    [SerializeField]
+    private List<GameObject> weapons = new List<GameObject>();
+    private GameObject equippedWeapon;
+    private IWeaponController equippedWeaponController;
 
-    public void Shoot()
+    void Start()
     {
-        if (equippedWeaponController == null)
-        {
-            equippedWeaponController = FindActiveWeaponController();
-        }
-        Debug.Log("Shoot");
-        equippedWeaponController.Fire();
+        LoadWeapons();
+        SetActiveWeapon(weapons[0]);
     }
 
-    public void SetActiveWeapon(IWeaponController weaponController)
+    public void SetActiveWeapon(GameObject weapon)
     {
-        equippedWeaponController = weaponController;
+        if (equippedWeapon != null)
+        {
+            equippedWeapon.SetActive(false);
+        }
+        weapon.SetActive(true);
+        equippedWeapon = weapon;
+        equippedWeaponController = weapon.GetComponent<IWeaponController>();
+    }
+
+    public void SetActiveWeapon1()
+    {
+        SetActiveWeapon(weapons[0]);
+    }
+
+    public void SetActiveWeapon2()
+    {
+        SetActiveWeapon(weapons[1]);
     }
 
     public IWeaponController FindActiveWeaponController()
@@ -32,5 +47,25 @@ public class PlayerShootingController : MonoBehaviour
             }
         }
         return null;
+    }
+
+    private List<IWeaponController> LoadWeapons()
+    {
+        List<IWeaponController> weapons = new List<IWeaponController>();
+        foreach (GameObject weapon in GameObject.FindGameObjectsWithTag("Weapon"))
+        {
+            weapons.Add(weapon.GetComponent<IWeaponController>());
+        }
+        return weapons;
+    }
+
+    public void Shoot()
+    {
+        if (equippedWeaponController == null)
+        {
+            equippedWeaponController = FindActiveWeaponController();
+        }
+        Debug.Log("Shoot");
+        equippedWeaponController.Fire();
     }
 }

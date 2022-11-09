@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     private int health = 3;
 
+
     public event OnDamageTaken OnDamage;
     public event System.Action OnDeath;
 
@@ -25,7 +26,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void Damage(int damage)
     {
-        Debug.Log("enemy health: " + health);
         health -= damage;
         if (OnDamage != null)
         {

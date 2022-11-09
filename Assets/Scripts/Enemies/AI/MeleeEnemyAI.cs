@@ -23,6 +23,9 @@ public class MeleeEnemyAI : AI
     private float delayBetweenAttacks = 1f;
     private float lastAttackTime = 0f;
 
+    [SerializeField]
+    private Transform attackPoint = null;
+
     private Transform playerTransform;
     private EnemyHealth enemyHealth;
     private PathfinderMovement pathfinderMovement;
@@ -39,6 +42,10 @@ public class MeleeEnemyAI : AI
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         playerController = playerTransform.GetComponent<PlayerController>();
         spawnPosition = transform.position;
+        if (attackPoint == null)
+        {
+            attackPoint = transform;
+        }
     }
     void FixedUpdate()
     {
@@ -81,7 +88,7 @@ public class MeleeEnemyAI : AI
             SetState(EnemyState.GoingToSpawn);
             return;
         }
-        else if (Vector2.Distance(transform.position, playerTransform.position) <= attackRadius)
+        else if (Vector2.Distance(attackPoint.position, playerTransform.position) <= attackRadius)
         {
             pathfinderMovement.Target = null;
             SetState(EnemyState.Attack);
@@ -100,7 +107,7 @@ public class MeleeEnemyAI : AI
             lastAttackTime = Time.time;
             StartCoroutine(ExecuteAttack());
         }
-        if (Vector2.Distance(playerTransform.position, transform.position) >= attackRadius)
+        if (Vector2.Distance(playerTransform.position, attackPoint.position) >= attackRadius)
         {
             SetState(EnemyState.Chase);
         }
@@ -110,7 +117,7 @@ public class MeleeEnemyAI : AI
     protected virtual IEnumerator ExecuteAttack()
     {
         yield return new WaitForSeconds(1f);
-        if (Vector2.Distance(playerTransform.position, transform.position) <= attackRadius)
+        if (Vector2.Distance(playerTransform.position, attackPoint.position) <= attackRadius)
         {
             playerController.Hit();
         }

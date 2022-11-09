@@ -27,8 +27,6 @@ public class MovementController : MonoBehaviour
     public event System.Action OnStop;
     public event System.Action OnFall;
 
-    private bool isInAir = false;
-
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
@@ -55,8 +53,8 @@ public class MovementController : MonoBehaviour
         }
 
         bool wasInAir = isInAir;
-
         isInAir = !IsGrounded();
+
         if (wasInAir && !isInAir)
         {
             jumpCount = 0;

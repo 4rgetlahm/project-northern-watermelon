@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public class EnemyAnimationController : MonoBehaviour
+public class MaggotAnimationController : MonoBehaviour
 {
     [SerializeField]
     Animator animator;
@@ -21,6 +21,7 @@ public class EnemyAnimationController : MonoBehaviour
         Type thisType = this.GetType();
         MethodInfo method = thisType.GetMethod(args.state.ToString(), BindingFlags.NonPublic | BindingFlags.Instance);
         method.Invoke(this, null);
+        Debug.Log(args.state);
     }
 
     void Chase()
