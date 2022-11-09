@@ -41,9 +41,24 @@ public class PathfinderMovement : MonoBehaviour
 
     public void SetDestination(Vector2 position)
     {
-        Debug.Log("SetDestination");
         ResetPath();
         targetPosition = position;
+    }
+
+    public Vector2 GetDestination()
+    {
+        if (targetPosition.HasValue)
+        {
+            return targetPosition.Value;
+        }
+        else if (Target != null)
+        {
+            return Target.position;
+        }
+        else
+        {
+            return transform.position;
+        }
     }
 
     void Start()

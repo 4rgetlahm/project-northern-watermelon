@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class EnemyAnimationController : MonoBehaviour
@@ -7,58 +9,46 @@ public class EnemyAnimationController : MonoBehaviour
     [SerializeField]
     Animator animator;
     [SerializeField]
-    MaggotMeleeEnemyAI movementController;
+    AI ai;
 
     void Start()
     {
-        movementController.OnEChase += Chase;
-        movementController.OnEIdle += Idle;
-        movementController.OnEAttack += Attack;
-        movementController.OnEEndAttack += EndAttack;
+        ai.OnAIStateChange += OnStateChange;
     }
 
-    /*
-    void Jump()
+    void OnStateChange(AIStateArgs args)
     {
-        Debug.Log("Jump");
-        animator.SetBool("Jumping_Up", true);
-        animator.SetBool("Landing", false);
+        Type thisType = this.GetType();
+        MethodInfo method = thisType.GetMethod(args.state.ToString(), BindingFlags.NonPublic | BindingFlags.Instance);
+        method.Invoke(this, null);
     }
-
-    void Falling()
-    {
-        Debug.Log("Falling");
-        animator.SetBool("Jumping_Up", false);
-    }
-
-    void Land()
-    {
-        Debug.Log("Land");
-        animator.SetBool("Jumping_Up", false);
-        animator.SetBool("Landing", true);
-    }
-    */
 
     void Chase()
     {
+        animator.SetBool("Attack", false);
         animator.SetBool("Idle", false);
         animator.SetBool("Chase", true);
     }
 
     void Idle()
     {
+        animator.SetBool("Attack", false);
+        animator.SetBool("Chase", false);
+        animator.SetBool("Idle", true);
+    }
+
+    void GoingToSpawn()
+    {
+        animator.SetBool("Attack", false);
         animator.SetBool("Chase", false);
         animator.SetBool("Idle", true);
     }
 
     void Attack()
     {
+        animator.SetBool("Chase", false);
+        animator.SetBool("Idle", false);
         animator.SetBool("Attack", true);
-    }
-
-    void EndAttack()
-    {
-        animator.SetBool("Attack", false);
     }
 
 }

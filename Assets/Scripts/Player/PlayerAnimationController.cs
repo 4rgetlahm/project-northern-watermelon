@@ -20,20 +20,17 @@ public class PlayerAnimationController : MonoBehaviour
 
     void Jump()
     {
-        Debug.Log("Jump");
         animator.SetBool("Jumping_Up", true);
         animator.SetBool("Landing", false);
     }
 
     void Falling()
     {
-        Debug.Log("Falling");
         animator.SetBool("Jumping_Up", false);
     }
 
     void Land()
     {
-        Debug.Log("Land");
         animator.SetBool("Jumping_Up", false);
         animator.SetBool("Landing", true);
     }

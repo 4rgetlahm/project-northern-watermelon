@@ -26,6 +26,10 @@ public class PistolController : MonoBehaviour, IWeaponController
 
         lastFireTime = Time.time;
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        if (projectileSpawnPoint.position.x < transform.position.x)
+        {
+            projectile.GetComponent<SpriteRenderer>().flipX = true;
+        }
         ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
         Vector3 direction = projectileSpawnPoint.position - transform.position;
         Debug.Log(direction);

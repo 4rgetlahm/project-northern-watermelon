@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     public void Hit(int damage)
     {
-        Debug.Log("Player hit for" + damage);
         healthController.Damage(damage);
         StartCoroutine(HitAnimation());
     }
