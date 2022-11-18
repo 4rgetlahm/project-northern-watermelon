@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CurrencyType
+{
+    RedSouls,
+    BlueSouls,
+    YellowSouls,
+    Eyece,
+    FingerBurn
+}
+
 public class CurrencyController : MonoBehaviour
 {
     private static int redSouls = 0;
