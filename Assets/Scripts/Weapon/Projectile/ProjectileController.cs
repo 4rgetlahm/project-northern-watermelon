@@ -52,7 +52,7 @@ public class ProjectileController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         transform.position += direction * speed * Time.deltaTime;
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField]
+    private MultipleSpriteHandler spriteHandler;
     private EnemyHealth healthController;
 
     void Start()
@@ -13,16 +15,28 @@ public class EnemyController : MonoBehaviour
 
     public void Hit(int damage)
     {
-        healthController.Damage(damage);
         StartCoroutine(HitAnimation());
+        healthController.Damage(damage);
     }
 
     IEnumerator HitAnimation()
     {
-        Color originalColor = GetComponent<SpriteRenderer>().color;
-        GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        GetComponent<SpriteRenderer>().color = originalColor;
+        if (spriteHandler != null)
+        {
+            spriteHandler.ChangeColor(Color.red);
+            yield return new WaitForSeconds(0.1f);
+            spriteHandler.ChangeColor(Color.white);
+        }
+    }
+
+    IEnumerator HealAnimation()
+    {
+        if (spriteHandler != null)
+        {
+            spriteHandler.ChangeColor(Color.green);
+            yield return new WaitForSeconds(0.1f);
+            spriteHandler.ChangeColor(Color.white);
+        }
     }
 
 

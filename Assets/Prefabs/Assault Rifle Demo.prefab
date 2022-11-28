@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 8976021468833994254}
   - component: {fileID: 2808017717595789061}
   m_Layer: 0
-  m_Name: Assault Rifle
+  m_Name: Assault Rifle Demo
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
