@@ -11,7 +11,6 @@ public class ProjectileController : MonoBehaviour
     private float lifeTime = 5f;
     [SerializeField]
     private int damage = 1;
-
     private Vector3 direction;
 
     public List<IWeaponBuff> buffs = new List<IWeaponBuff>();
@@ -19,6 +18,16 @@ public class ProjectileController : MonoBehaviour
     public void SetDirection(Vector3 direction)
     {
         this.direction = direction;
+    }
+
+    public void ChangeSpeed(float speed)
+    {
+        this.speed = speed;
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
     }
 
     public void ApplyOnHitBuffs(GameObject target)
@@ -46,6 +55,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (target.tag == "Enemy")
         {
+            Debug.Log("Total buffs: " + buffs.Count);
             ApplyOnHitBuffs(target);
             target.GetComponent<EnemyController>().Hit(damage);
         }
