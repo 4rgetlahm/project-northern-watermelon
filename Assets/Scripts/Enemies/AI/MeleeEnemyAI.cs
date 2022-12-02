@@ -68,8 +68,9 @@ public class MeleeEnemyAI : AI
         {
             pathfinderMovement.SetDestination(spawnPosition);
         }
-        if (Vector2.Distance(spawnPosition, transform.position) < 1f)
+        if (Vector2.Distance(spawnPosition, transform.position) < 2f)
         {
+            pathfinderMovement.ResetPath();
             SetState(EnemyState.Idle);
             return;
         }
@@ -102,11 +103,6 @@ public class MeleeEnemyAI : AI
 
     protected virtual void Attack()
     {
-        if (lastAttackTime + delayBetweenAttacks < Time.time)
-        {
-            lastAttackTime = Time.time;
-            StartCoroutine(ExecuteAttack());
-        }
         if (Vector2.Distance(playerTransform.position, attackPoint.position) >= attackRadius)
         {
             SetState(EnemyState.Chase);
@@ -114,12 +110,17 @@ public class MeleeEnemyAI : AI
     }
 
 
-    protected virtual IEnumerator ExecuteAttack()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        yield return new WaitForSeconds(1f);
-        if (Vector2.Distance(playerTransform.position, attackPoint.position) <= attackRadius)
+        if (collision.collider.CompareTag("Player"))
         {
-            playerController.Hit();
+            Vector2 direction = (collision.transform.position - transform.position).normalized;
+            playerController.GetComponent<MovementController>().Knockback(direction, 20f);
+            if (Time.time - lastAttackTime > delayBetweenAttacks)
+            {
+                lastAttackTime = Time.time;
+                playerController.Hit(1);
+            }
         }
     }
 }
