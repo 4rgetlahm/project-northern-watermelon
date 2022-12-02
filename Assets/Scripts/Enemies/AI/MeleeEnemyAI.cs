@@ -68,7 +68,7 @@ public class MeleeEnemyAI : AI
         {
             pathfinderMovement.SetDestination(spawnPosition);
         }
-        if (Vector2.Distance(spawnPosition, transform.position) < 1f)
+        if (Vector2.Distance(spawnPosition, transform.position) < 100000)
         {
             SetState(EnemyState.Idle);
             return;

@@ -89,12 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cf0773ea0963db4b8bc1bcf15ea24b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSprites:
-  - {fileID: 3182369403821096198}
-  - {fileID: 6288551223886416239}
-  - {fileID: 8713449667124187559}
-  - {fileID: 196368680620907316}
-  - {fileID: 9172821846016415116}
+  spriteHandler: {fileID: 0}
 --- !u!114 &731805803267848885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +195,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 09cb4470-7d16-4904-97d0-e1f550776257
     m_ActionName: Player/Shoot[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5b7541c1-2faf-4ccc-ba30-24b2ab3bd40c
+    m_ActionName: Player/Weapon 1[/Keyboard/1]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bb3e6e37-0cc7-4bfe-8676-f4b709663516
+    m_ActionName: Player/Weapon 2[/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player

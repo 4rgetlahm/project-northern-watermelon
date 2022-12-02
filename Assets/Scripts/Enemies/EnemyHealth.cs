@@ -16,6 +16,8 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField]
     private int health = 3;
+    [SerializeField]
+    public GameObject blood;
 
 
     public event OnDamageTaken OnDamage;
@@ -48,6 +50,7 @@ public class EnemyHealth : MonoBehaviour
         {
             OnDeath();
         }
+        Instantiate(blood, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
