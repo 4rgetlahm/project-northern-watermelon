@@ -13,6 +13,12 @@ public class MovementController : MonoBehaviour
     private float movementSpeed = 5f;
     [SerializeField]
     private float jumpForce = 10f;
+    [SerializeField]
+    private GameObject arm;
+
+    [SerializeField]
+    private Camera theCam;
+
     private BoxCollider2D boxCollider;
     private Rigidbody2D rigidBody;
     private int jumpCount = 0;
@@ -25,12 +31,17 @@ public class MovementController : MonoBehaviour
     public event System.Action OnLand;
     public event System.Action OnMove;
     public event System.Action OnStop;
+    public event System.Action OnBackwardsMove;
     public event System.Action OnFall;
+
+    public int side = 0; //0 - left, 1 - right
 
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+
+        //theCam = Camera.main;
     }
 
     void FixedUpdate()
@@ -42,12 +53,13 @@ public class MovementController : MonoBehaviour
         {
             OnFall?.Invoke();
         }
-
-        if (horizontalInput < 0)
+        //left
+        if (horizontalInput < 0 && side == 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if (horizontalInput > 0)
+        //right
+        else if (horizontalInput > 0 && side == 1)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
@@ -60,6 +72,54 @@ public class MovementController : MonoBehaviour
             jumpCount = 0;
             OnLand?.Invoke();
         }
+
+
+        //arm rotation
+        Vector3 mouse = Input.mousePosition;
+        
+        Vector3 screenPoint = theCam.WorldToScreenPoint(transform.localPosition);
+
+        Vector2 offset = new Vector2(mouse.x - screenPoint.x, mouse.y - screenPoint.y);
+
+        float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
+
+        //transformation
+        float editAngle = 0;
+
+        //angle is left
+        if(angle > 90)
+        {
+            side = 0;
+            angle = angle - 180;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        //angle left
+        else if(angle < -90)
+        {
+            side = 0;
+            angle = angle + 180;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        //right
+        else
+        {
+            side = 1;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        Debug.Log("angle " + angle);
+
+
+        //let angle be only 10 or -10 degrees
+        if (angle > 10)
+            editAngle = 10;
+        else if (angle < -10)
+            editAngle = -10;
+        else
+            editAngle = angle;
+
+        arm.transform.rotation = Quaternion.Euler(0f, 0f, editAngle);
+        //Debug.Log("angle "+ editAngle);
+        //arm rotation
     }
 
     private bool IsGrounded()
@@ -76,7 +136,14 @@ public class MovementController : MonoBehaviour
             OnStop?.Invoke();
             return;
         }
-        OnMove?.Invoke();
+
+        //if moving
+        if (side == 0 && horizontalInput > 0)
+            OnBackwardsMove?.Invoke();
+        else if (side == 1 && horizontalInput < 0)
+            OnBackwardsMove?.Invoke();
+        else
+            OnMove?.Invoke();
     }
 
     public void Jump(InputAction.CallbackContext context)
