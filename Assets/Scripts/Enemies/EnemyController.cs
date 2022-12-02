@@ -7,14 +7,17 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private MultipleSpriteHandler spriteHandler;
     private EnemyHealth healthController;
+    AudioSource maggotsound;
 
     void Start()
     {
         healthController = GetComponent<EnemyHealth>();
+        maggotsound = GetComponent<AudioSource>();
     }
 
     public void Hit(int damage)
     {
+        maggotsound.Play();
         StartCoroutine(HitAnimation());
         healthController.Damage(damage);
     }

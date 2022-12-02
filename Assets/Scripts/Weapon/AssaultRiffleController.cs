@@ -17,9 +17,12 @@ public class AssaultRiffleController : MonoBehaviour, IWeaponController
     private int damage = 1;
     private float lastFireTime = 0f;
     private List<IWeaponBuff> buffs = new List<IWeaponBuff>();
+    AudioSource gunsound;
 
     public void Fire()
     {
+        gunsound = GetComponent<AudioSource>();
+        gunsound.Play();
         if (Time.time - lastFireTime < fireRate)
         {
             return;

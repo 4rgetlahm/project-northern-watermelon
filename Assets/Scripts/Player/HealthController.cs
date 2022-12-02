@@ -15,6 +15,8 @@ public class HealthController : MonoBehaviour
     private Vector3 healthOffset;
     private Transform canvasTransform;
     private List<GameObject> healthObjectsList = new List<GameObject>();
+    public AudioSource src;
+    public AudioClip jump, damage, death;
 
     public int Health
     {
@@ -32,12 +34,15 @@ public class HealthController : MonoBehaviour
 
     void Start()
     {
+        src = gameObject.GetComponent<AudioSource>();
         canvasTransform = GameObject.Find("Canvas").transform;
         UpdateHealth();
     }
 
     public void Damage(int health)
     {
+        src.clip = damage;
+        src.Play();
         Health -= health;
     }
 
@@ -65,6 +70,8 @@ public class HealthController : MonoBehaviour
 
     private void Death()
     {
+        src.clip = death;
+        src.Play();
         Debug.Log("Death");
     }
 

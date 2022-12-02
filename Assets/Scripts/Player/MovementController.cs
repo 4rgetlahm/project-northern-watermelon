@@ -18,6 +18,9 @@ public class MovementController : MonoBehaviour
     private int jumpCount = 0;
     private float horizontalInput;
     private float verticalInput;
+    private AudioSource src;
+    public AudioClip jump;
+    public AudioClip walk;
 
     private bool isInAir = false;
 
@@ -31,6 +34,7 @@ public class MovementController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        src = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -69,6 +73,7 @@ public class MovementController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        src.clip = walk;
         horizontalInput = context.ReadValue<Vector2>().x;
 
         if (horizontalInput == 0)
@@ -76,6 +81,7 @@ public class MovementController : MonoBehaviour
             OnStop?.Invoke();
             return;
         }
+        src.Play();
         OnMove?.Invoke();
     }
 
@@ -83,10 +89,14 @@ public class MovementController : MonoBehaviour
     {
         if (!context.performed)
         {
+            src.clip = jump;
+            src.Play();
             return;
         }
         if (jumpCount == multiJumpCount)
         {
+            src.clip = jump;
+            src.Play();
             return;
         }
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0); //reset y velocity so the jump is from a "standing position"
