@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9099024167928992223}
   m_Layer: 0
   m_Name: Game Master
-  m_TagString: Untagged
+  m_TagString: Game Master
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25434a56afe45d344b9154f12d8bcf1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons: []
 --- !u!114 &5977733385801633904
 MonoBehaviour:
   m_ObjectHideFlags: 0
