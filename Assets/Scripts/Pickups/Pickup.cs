@@ -10,6 +10,9 @@ public class Pickup : MonoBehaviour
     private CurrencyType pickupCurrency;
     [SerializeField]
     private int amount = 1;
+    [SerializeField]
+    public GameObject particle;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("trigger enter");
@@ -46,6 +49,8 @@ public class Pickup : MonoBehaviour
             default:
                 return;
         }
+
+        Instantiate(particle, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 

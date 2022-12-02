@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 731805803267848885}
   - component: {fileID: 731805803267848891}
   - component: {fileID: 7594015253835471833}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -79,6 +79,7 @@ MonoBehaviour:
   jumpForce: 25
   arm: {fileID: 6880487794984051484}
   theCam: {fileID: 7459729223027921627}
+  side: 0
 --- !u!114 &1295453487437491845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 731805803406668777}
   - component: {fileID: 5896358292383220829}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +317,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 731805803537454534}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +350,7 @@ GameObject:
   - component: {fileID: 3452014829746709454}
   - component: {fileID: 7459729223027921627}
   - component: {fileID: 1477261053077334228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7514154975953179591}
   - component: {fileID: 196368680620907316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3255258769693177438}
   - component: {fileID: 9172821846016415116}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -600,7 +601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4109751637702321352}
   - component: {fileID: 3182369403821096198}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +686,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2263418909213683056}
   - component: {fileID: 6288551223886416239}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -769,7 +770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2373069487979951638}
   - component: {fileID: 8713449667124187559}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,6 +851,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 731805803267848887}
     m_Modifications:
+    - target: {fileID: 2894191867635665858, guid: 83b820d7d6ad17544a5059607b06ab7e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6154161193747522206, guid: 83b820d7d6ad17544a5059607b06ab7e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -894,9 +899,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6989285600923119053, guid: 83b820d7d6ad17544a5059607b06ab7e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8188431613300254409, guid: 83b820d7d6ad17544a5059607b06ab7e, type: 3}
       propertyPath: m_Name
       value: Assault Rifle Demo
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188431613300254409, guid: 83b820d7d6ad17544a5059607b06ab7e, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8188431613300254409, guid: 83b820d7d6ad17544a5059607b06ab7e, type: 3}
       propertyPath: m_IsActive
@@ -923,6 +936,10 @@ PrefabInstance:
     - target: {fileID: 2105652495441279309, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}
       propertyPath: fireRate
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4300485175700784424, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6154161193747522206, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}
       propertyPath: m_RootOrder
@@ -968,9 +985,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6989285600923119053, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8188431613300254409, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188431613300254409, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}

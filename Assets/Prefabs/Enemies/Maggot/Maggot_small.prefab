@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8798512681750259673}
   - component: {fileID: 237600502276159422}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: maggot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6687310236422963124}
   - component: {fileID: 105358014176228741}
   - component: {fileID: 4816362805413033535}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7588971838840364973}
   - component: {fileID: 8184306134530774579}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: maggot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2798057105443473553}
   - component: {fileID: 3543055406906776401}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: maggot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 895158944841446250}
   - component: {fileID: 3468475965830752800}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: frame0000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8207205887008813200}
   - component: {fileID: 7235436772844646647}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: maggot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 7813290833378881151}
   - component: {fileID: 4620013650115626179}
   - component: {fileID: 1231604392302284586}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Maggot_small
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -708,7 +708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7815418813738167898}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Attack Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

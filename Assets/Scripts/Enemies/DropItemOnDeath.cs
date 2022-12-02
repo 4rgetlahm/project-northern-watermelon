@@ -29,6 +29,7 @@ public class DropItemOnDeath : MonoBehaviour
             return;
         }
         GameObject dropItem = GameObject.Instantiate(dropItemPrefab);
+        dropItem.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(.0f, 5.0f), Random.Range(.0f, 5.0f));
         dropItem.transform.SetPositionAndRotation(transform.position, new Quaternion(0, 0 ,0 ,0));
     }
 }
