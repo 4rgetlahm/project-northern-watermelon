@@ -106,7 +106,6 @@ public class MovementController : MonoBehaviour
             side = 1;
             transform.localScale = new Vector3(1, 1, 1);
         }
-        Debug.Log("angle " + angle);
 
 
         //let angle be only 10 or -10 degrees
@@ -118,7 +117,6 @@ public class MovementController : MonoBehaviour
             editAngle = angle;
 
         arm.transform.rotation = Quaternion.Euler(0f, 0f, editAngle);
-        //Debug.Log("angle "+ editAngle);
         //arm rotation
     }
 
