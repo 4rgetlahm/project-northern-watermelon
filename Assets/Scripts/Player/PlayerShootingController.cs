@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerShootingController : MonoBehaviour
 {
@@ -9,10 +10,20 @@ public class PlayerShootingController : MonoBehaviour
     private GameObject equippedWeapon;
     private IWeaponController equippedWeaponController;
 
+    private bool isShooting = false;
+
     void Start()
     {
         LoadWeapons();
         SetActiveWeapon(weapons[0]);
+    }
+
+    void FixedUpdate()
+    {
+        if (isShooting)
+        {
+            Shoot();
+        }
     }
 
     public void SetActiveWeapon(GameObject weapon)
@@ -59,13 +70,24 @@ public class PlayerShootingController : MonoBehaviour
         return weapons;
     }
 
+    public void MouseDown(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            isShooting = true;
+        }
+        else if (context.canceled)
+        {
+            isShooting = false;
+        }
+    }
+
     public void Shoot()
     {
         if (equippedWeaponController == null)
         {
             equippedWeaponController = FindActiveWeaponController();
         }
-        Debug.Log("Shoot");
         equippedWeaponController.Fire();
     }
 }
