@@ -41,6 +41,16 @@ public class MeleeEnemyAI : AI
     }
     void FixedUpdate()
     {
+        Vector2 targetDirection = ((Vector2)playerTransform.position - (Vector2)transform.position).normalized;
+        if (targetDirection.x > 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (targetDirection.x < 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
         Type thisType = this.GetType();
         MethodInfo method = thisType.GetMethod(state.ToString(), BindingFlags.NonPublic | BindingFlags.Instance);
         method.Invoke(this, null);
