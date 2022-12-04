@@ -36,6 +36,11 @@ public class MovementController : MonoBehaviour
     public event System.Action OnBackwardsMove;
     public event System.Action OnFall;
 
+    //audio
+    private AudioSource src;
+    public AudioClip jump;
+    public AudioClip walk;
+
     public int side = 0; //0 - left, 1 - right
 
     void Awake()
@@ -43,6 +48,8 @@ public class MovementController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
 
+        //audio
+        src = GetComponent<AudioSource>();
         //theCam = Camera.main;
     }
 
@@ -142,7 +149,6 @@ public class MovementController : MonoBehaviour
             return;
         }
 
-
         //if moving
         if (side == 0 && horizontalInput > 0)
             OnBackwardsMove?.Invoke();
@@ -151,8 +157,11 @@ public class MovementController : MonoBehaviour
         else
             OnMove?.Invoke();
 
+        //audio
+        src.clip = walk;
+        src.Play();
+        
         isMoving = true;
-        //OnMove?.Invoke();
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -168,6 +177,10 @@ public class MovementController : MonoBehaviour
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0); //reset y velocity so the jump is from a "standing position"
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
         jumpCount++;
+        
+        //audio
+        src.clip = jump;
+        src.Play();
         OnJump?.Invoke();
     }
 

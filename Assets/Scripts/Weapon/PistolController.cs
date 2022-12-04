@@ -14,12 +14,26 @@ public class PistolController : MonoBehaviour, IWeaponController
     private Animator anim;
     private float lastFireTime = 0f;
 
+    //audio
+    public AudioSource src;
+    public AudioClip shoot;
+
+    void Start()
+    {
+        //audio
+        src = gameObject.GetComponent<AudioSource>();
+    }
+
     public void Fire()
     {
         if (Time.time - lastFireTime < fireRate)
         {
             return;
         }
+        //audio
+        src.clip = shoot;
+        src.Play();
+
         //animation
         anim.Play("shoot");
 

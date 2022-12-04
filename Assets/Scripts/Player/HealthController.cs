@@ -16,6 +16,10 @@ public class HealthController : MonoBehaviour
     private Transform canvasTransform;
     private List<GameObject> healthObjectsList = new List<GameObject>();
 
+    //audio
+    public AudioSource src;
+    public AudioClip damage, death;
+
     public int Health
     {
         get { return _health; }
@@ -32,12 +36,19 @@ public class HealthController : MonoBehaviour
 
     void Start()
     {
+        //audio
+        src = gameObject.GetComponent<AudioSource>();
+
         canvasTransform = GameObject.Find("Canvas").transform;
         UpdateHealth();
     }
 
     public void Damage(int health)
     {
+        //audio
+        src.clip = damage;
+        src.Play();
+
         Health -= health;
     }
 
@@ -65,6 +76,10 @@ public class HealthController : MonoBehaviour
 
     private void Death()
     {
+        //audio
+        src.clip = death;
+        src.Play();
+
         Debug.Log("Death");
     }
 
