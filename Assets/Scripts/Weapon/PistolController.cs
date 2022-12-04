@@ -13,7 +13,6 @@ public class PistolController : MonoBehaviour, IWeaponController
     [SerializeField]
     private Animator anim;
     private float lastFireTime = 0f;
-    private List<IWeaponBuff> buffs = new List<IWeaponBuff>();
 
     public void Fire()
     {
@@ -31,16 +30,11 @@ public class PistolController : MonoBehaviour, IWeaponController
             projectile.GetComponent<SpriteRenderer>().flipX = true;
         }
         ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
+        projectileController.buffs.AddRange(SkillTree.GetWeaponBuffs(SkillType.PistolOnHit));
+        projectileController.buffs.AddRange(SkillTree.GetWeaponBuffs(SkillType.PistolPassive));
         Vector3 direction = projectileSpawnPoint.position - transform.position;
-        Debug.Log(direction);
         projectileController.SetDirection(direction.normalized);
-        projectileController.buffs = buffs;
         projectileController.ApplyProjectileBuffs();
-    }
-
-    public void AddBuff(IWeaponBuff buff)
-    {
-        buffs.Add(buff);
     }
 
 }

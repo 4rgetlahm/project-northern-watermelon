@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class DropItemOnDeath : MonoBehaviour
 {
+    /*
     [SerializeField]
     private GameObject dropItemPrefab;
     [SerializeField]
-    private float dropRate = 1f;
+    private float dropRate = 1f;*/
+
+    [SerializeField]
+    public List<GameObject> dropItemPrefab = new List<GameObject>();
+
+    [SerializeField]
+    public List<float> chance = new List<float>();
+
+    [SerializeField]
+    public List<int> maxQuantity = new List<int>();
 
     void Start()
     {
@@ -24,11 +34,20 @@ public class DropItemOnDeath : MonoBehaviour
 
     private void DropItem()
     {
-        if (Random.Range(0f, 1f) > dropRate)
+        int size = dropItemPrefab.Capacity;
+
+        for(int i=0; i<size; i++)
         {
-            return;
+            //calculate if dropped
+            if (Random.Range(0f, 1f) > 1 - chance[i])
+            {
+                for (int j = 0; j < Random.Range(1, maxQuantity[i]); j++)
+                {
+                    GameObject dropItem = GameObject.Instantiate(dropItemPrefab[i]);
+                    dropItem.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(.0f, 5.0f), Random.Range(.0f, 5.0f));
+                    dropItem.transform.SetPositionAndRotation(transform.position, new Quaternion(0, 0, 0, 0));
+                }
+            }
         }
-        GameObject dropItem = GameObject.Instantiate(dropItemPrefab);
-        dropItem.transform.SetPositionAndRotation(transform.position, new Quaternion(0, 0 ,0 ,0));
     }
 }

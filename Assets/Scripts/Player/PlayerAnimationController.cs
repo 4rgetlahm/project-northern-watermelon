@@ -14,6 +14,7 @@ public class PlayerAnimationController : MonoBehaviour
         movementController.OnJump += Jump;
         movementController.OnLand += Land;
         movementController.OnMove += Move;
+        movementController.OnBackwardsMove += BackwardsMove;
         movementController.OnStop += Stop;
         movementController.OnFall += Falling;
     }
@@ -38,10 +39,18 @@ public class PlayerAnimationController : MonoBehaviour
     void Move()
     {
         animator.SetBool("Walking", true);
+        animator.SetBool("BackwardsWalking", false);
+    }
+
+    void BackwardsMove()
+    {
+        animator.SetBool("BackwardsWalking", true);
+        animator.SetBool("Walking", false);
     }
 
     void Stop()
     {
         animator.SetBool("Walking", false);
+        animator.SetBool("BackwardsWalking", false);
     }
 }

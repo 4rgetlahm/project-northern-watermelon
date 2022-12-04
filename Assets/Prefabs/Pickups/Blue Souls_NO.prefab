@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7091497168325532722}
   - component: {fileID: 7377269983340956558}
   m_Layer: 0
-  m_Name: Finger Burn
+  m_Name: Blue Souls_NO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.98146206, g: 0.09019607, b: 1, a: 1}
+  m_Color: {r: 0.09019607, g: 0.2936533, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0a734639fde184f8f1b933a78eb883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupCurrency: 4
+  pickupCurrency: 1
   amount: 1
 --- !u!61 &7377269983340956558
 BoxCollider2D:
