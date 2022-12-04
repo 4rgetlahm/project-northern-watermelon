@@ -55,12 +55,15 @@ TagManager:
   - name: Maggot
     uniqueID: 2573080521
     locked: 0
+  - name: Skull
+    uniqueID: 1040787413
+    locked: 0
+  - name: Crawler
+    uniqueID: 2884065597
+    locked: 0
   - name: EnvironmentMiddle
     uniqueID: 1143112919
     locked: 0
   - name: EnvironmentFront
     uniqueID: 4131612437
-    locked: 0
-  - name: Skull
-    uniqueID: 1040787413
     locked: 0
