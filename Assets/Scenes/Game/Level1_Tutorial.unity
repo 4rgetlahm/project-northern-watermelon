@@ -5784,6 +5784,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1049030421 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1973293987007316015, guid: 9ecc1f43b2ef3e343aac570669d30d17, type: 3}
+  m_PrefabInstance: {fileID: 1559420844}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1088026345
 GameObject:
   m_ObjectHideFlags: 0
@@ -6332,7 +6337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -7709,11 +7713,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 731805803406668776, guid: 9ecc1f43b2ef3e343aac570669d30d17, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9ecc1f43b2ef3e343aac570669d30d17, type: 3}
---- !u!1 &1559420845 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3178855944516189122, guid: 9ecc1f43b2ef3e343aac570669d30d17, type: 3}
-  m_PrefabInstance: {fileID: 1559420844}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1571956073
 GameObject:
   m_ObjectHideFlags: 0
@@ -28950,7 +28949,7 @@ PrefabInstance:
     - target: {fileID: 7108677150558841417, guid: 9d0fd8802c543104786276d27d29ce99, type: 3}
       propertyPath: weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 1559420845}
+      objectReference: {fileID: 1049030421}
     - target: {fileID: 7108677150558841417, guid: 9d0fd8802c543104786276d27d29ce99, type: 3}
       propertyPath: weapons.Array.data[1]
       value: 
