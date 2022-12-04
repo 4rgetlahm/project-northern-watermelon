@@ -26,6 +26,8 @@ public class MovementController : MonoBehaviour
     private float verticalInput;
 
     private bool isInAir = false;
+    private bool isMoving = false;
+    private bool isKnockedback = false;
 
     public event System.Action OnJump;
     public event System.Action OnLand;
@@ -46,6 +48,10 @@ public class MovementController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isKnockedback)
+        {
+            return;
+        }
         rigidBody.velocity = new Vector2(horizontalInput * movementSpeed, rigidBody.velocity.y);
 
 
@@ -131,9 +137,11 @@ public class MovementController : MonoBehaviour
 
         if (horizontalInput == 0)
         {
+            isMoving = false;
             OnStop?.Invoke();
             return;
         }
+
 
         //if moving
         if (side == 0 && horizontalInput > 0)
@@ -142,6 +150,9 @@ public class MovementController : MonoBehaviour
             OnBackwardsMove?.Invoke();
         else
             OnMove?.Invoke();
+
+        isMoving = true;
+        //OnMove?.Invoke();
     }
 
     public void Jump(InputAction.CallbackContext context)
@@ -158,5 +169,19 @@ public class MovementController : MonoBehaviour
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
         jumpCount++;
         OnJump?.Invoke();
+    }
+
+    public void Knockback(Vector2 direction, float force)
+    {
+        StartCoroutine(KnockbackTimer(0.2f));
+        rigidBody.velocity = new Vector2(0, 0);
+        rigidBody.AddForce(direction * force, ForceMode2D.Impulse);
+    }
+
+    private IEnumerator KnockbackTimer(float timeSeconds)
+    {
+        isKnockedback = true;
+        yield return new WaitForSeconds(timeSeconds);
+        isKnockedback = false;
     }
 }

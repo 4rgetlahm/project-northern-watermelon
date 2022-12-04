@@ -26,7 +26,6 @@ public class RocketLauncherController : MonoBehaviour, IWeaponController
         Vector3 direction = projectileSpawnPoint.position - transform.position;
         Debug.Log(direction);
         projectileController.SetDirection(direction.normalized);
-        projectileController.buffs = buffs;
         projectileController.ApplyProjectileBuffs();
 
     }

@@ -16,7 +16,6 @@ public class AssaultRiffleController : MonoBehaviour, IWeaponController
     [SerializeField]
     private int damage = 1;
     private float lastFireTime = 0f;
-    private List<IWeaponBuff> buffs = new List<IWeaponBuff>();
 
     public void Fire()
     {
@@ -55,15 +54,10 @@ public class AssaultRiffleController : MonoBehaviour, IWeaponController
 
     public void ApplyOnHitEffects(GameObject target)
     {
-        foreach (IWeaponBuff buff in buffs)
+        foreach (IWeaponBuff buff in SkillTree.GetWeaponBuffs(SkillType.AssaultRifleOnHit))
         {
             buff.ApplyOnHit(target);
         }
-    }
-
-    public void AddBuff(IWeaponBuff buff)
-    {
-        buffs.Add(buff);
     }
 
 }
