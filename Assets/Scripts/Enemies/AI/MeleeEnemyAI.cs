@@ -7,8 +7,6 @@ using UnityEngine;
 public enum EnemyState
 {
     Idle,
-    GoingToSpawn,
-    Patrol,
     Chase,
     Attack
 }
@@ -23,9 +21,6 @@ public class MeleeEnemyAI : AI
     private float delayBetweenAttacks = 1f;
     private float lastAttackTime = 0f;
 
-    [SerializeField]
-    private Transform attackPoint = null;
-
     private Transform playerTransform;
     private EnemyHealth enemyHealth;
     private PathfinderMovement pathfinderMovement;
@@ -39,13 +34,10 @@ public class MeleeEnemyAI : AI
         state = EnemyState.Idle;
         enemyHealth = GetComponent<EnemyHealth>();
         pathfinderMovement = GetComponent<PathfinderMovement>();
+        pathfinderMovement.OnDestinationReached += OnPathfinderDestinationReached;
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         playerController = playerTransform.GetComponent<PlayerController>();
         spawnPosition = transform.position;
-        if (attackPoint == null)
-        {
-            attackPoint = transform;
-        }
     }
     void FixedUpdate()
     {
@@ -62,39 +54,8 @@ public class MeleeEnemyAI : AI
         }
     }
 
-    protected virtual void GoingToSpawn()
-    {
-        if (pathfinderMovement.GetDestination() != spawnPosition)
-        {
-            pathfinderMovement.SetDestination(spawnPosition);
-        }
-        if (Vector2.Distance(spawnPosition, transform.position) < 2f)
-        {
-            pathfinderMovement.ResetPath();
-            SetState(EnemyState.Idle);
-            return;
-        }
-    }
-
-    protected virtual void Patrol()
-    {
-        //TODO
-    }
-
     protected virtual void Chase()
     {
-        if (Vector2.Distance(spawnPosition, playerTransform.position) > triggerRadius)
-        {
-            pathfinderMovement.Target = null;
-            SetState(EnemyState.GoingToSpawn);
-            return;
-        }
-        else if (Vector2.Distance(attackPoint.position, playerTransform.position) <= attackRadius)
-        {
-            pathfinderMovement.Target = null;
-            SetState(EnemyState.Attack);
-            return;
-        }
         if (pathfinderMovement.Target != playerTransform)
         {
             pathfinderMovement.Target = playerTransform;
@@ -103,7 +64,7 @@ public class MeleeEnemyAI : AI
 
     protected virtual void Attack()
     {
-        if (Vector2.Distance(playerTransform.position, attackPoint.position) >= attackRadius)
+        if (Vector2.Distance(transform.position, playerTransform.position) >= attackRadius)
         {
             SetState(EnemyState.Chase);
         }
@@ -121,6 +82,14 @@ public class MeleeEnemyAI : AI
                 lastAttackTime = Time.time;
                 playerController.Hit(1);
             }
+        }
+    }
+
+    private void OnPathfinderDestinationReached()
+    {
+        if (state == EnemyState.Chase)
+        {
+            SetState(EnemyState.Attack);
         }
     }
 }

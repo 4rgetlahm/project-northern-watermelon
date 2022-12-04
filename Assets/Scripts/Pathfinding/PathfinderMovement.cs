@@ -14,10 +14,10 @@ public class PathfinderMovement : MonoBehaviour
     private bool canJump = false;
     [SerializeField]
     private float jumpForce = 400f;
-    private float nextWaypointDistance = 3f;
     private Seeker seeker;
     private Rigidbody2D rigidBody;
     private BoxCollider2D boxCollider;
+    public System.Action OnDestinationReached;
 
     private Transform _target = null;
     public Transform Target
@@ -28,36 +28,11 @@ public class PathfinderMovement : MonoBehaviour
         }
         set
         {
-            if (_target != value)
-            {
-                ResetPath();
-            }
             _target = value;
-            UpdatePathToTarget();
-        }
-    }
-
-    public Vector2? targetPosition;
-
-    public void SetDestination(Vector2 position)
-    {
-        ResetPath();
-        targetPosition = position;
-    }
-
-    public Vector2 GetDestination()
-    {
-        if (targetPosition.HasValue)
-        {
-            return targetPosition.Value;
-        }
-        else if (Target != null)
-        {
-            return Target.position;
-        }
-        else
-        {
-            return transform.position;
+            if (_target != null)
+            {
+                GeneratePath();
+            }
         }
     }
 
@@ -67,7 +42,6 @@ public class PathfinderMovement : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
 
-        InvokeRepeating("UpdatePathToTarget", 0f, 0.5f);
         InvokeRepeating("GeneratePath", 0f, 0.5f);
     }
 
@@ -76,42 +50,21 @@ public class PathfinderMovement : MonoBehaviour
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Obstacle"));
     }
 
-    public void ResetPath()
-    {
-        targetPosition = null;
-        currentPath = null;
-        currentWaypoint = 0;
-    }
-
-    void UpdatePathToTarget()
+    void GeneratePath()
     {
         if (Target == null)
         {
             return;
         }
-        targetPosition = Target.position;
-    }
-
-    void GeneratePath()
-    {
-        if (targetPosition == null)
-        {
-            return;
-        }
         if (seeker.IsDone())
         {
-            seeker.StartPath(rigidBody.position, new Vector3(targetPosition.Value.x, targetPosition.Value.y, 0), OnPathGenerationComplete);
+            seeker.StartPath(transform.position, new Vector3(Target.position.x, Target.position.y, 0), OnPathGenerationComplete);
         }
     }
 
     void OnPathGenerationComplete(Path p)
     {
-        Debug.Log("Generated path");
         if (p.error)
-        {
-            return;
-        }
-        if (targetPosition == null)
         {
             return;
         }
@@ -120,9 +73,9 @@ public class PathfinderMovement : MonoBehaviour
         currentWaypoint = 0;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if (currentPath == null || targetPosition == null)
+        if (currentPath == null)
         {
             return;
         }
@@ -131,19 +84,18 @@ public class PathfinderMovement : MonoBehaviour
             return;
         }
 
-        float distanceToTarget = Vector2.Distance(transform.position, targetPosition.Value);
+        float distanceToTarget = Vector2.Distance(transform.position, Target.position);
+        Debug.Log(Target.position);
         if (distanceToTarget < 1f)
         {
-            ResetPath();
             rigidBody.velocity = Vector2.zero;
+            OnDestinationReached?.Invoke();
             return;
         }
 
         Vector2 direction = ((Vector2)currentPath.vectorPath[currentWaypoint] - (Vector2)transform.position).normalized;
         Vector2 force = direction * speed;
         rigidBody.velocity = new Vector2(force.x, rigidBody.velocity.y);
-
-        rigidBody.AddForce(force);
 
         if (force.x >= 0.01f)
         {
