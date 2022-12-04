@@ -73,7 +73,7 @@ public class PathfinderMovement : MonoBehaviour
         currentWaypoint = 0;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (currentPath == null)
         {
@@ -96,15 +96,6 @@ public class PathfinderMovement : MonoBehaviour
         Vector2 direction = ((Vector2)currentPath.vectorPath[currentWaypoint] - (Vector2)transform.position).normalized;
         Vector2 force = direction * speed;
         rigidBody.velocity = new Vector2(force.x, rigidBody.velocity.y);
-
-        if (force.x >= 0.01f)
-        {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
-        else if (force.x <= -0.01f)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }
 
         if (canJump && direction.y > 0.5f && IsGrounded())
         {
