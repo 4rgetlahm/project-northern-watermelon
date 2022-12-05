@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public enum CurrencyType
 {
@@ -18,6 +19,26 @@ public class CurrencyController : MonoBehaviour
     private static int yellowSouls = 0;
     private static int eyece = 0;
     private static int fingerBurn = 0;
+
+    [SerializeField]
+    public TMP_Text redSoulsObj;
+    [SerializeField]
+    public TMP_Text blueSoulsObj;
+    [SerializeField]
+    public TMP_Text yellowSoulsObj;
+    [SerializeField]
+    public TMP_Text eyeceObj;
+    [SerializeField]
+    public TMP_Text fingerBurnObj;
+
+    public void Update()
+    {
+        redSoulsObj.text = redSouls.ToString() + "x";
+        blueSoulsObj.text = blueSouls.ToString() + "x";
+        yellowSoulsObj.text = yellowSouls.ToString() + "x";
+        eyeceObj.text = eyece.ToString() + "x";
+        fingerBurnObj.text = fingerBurn.ToString() + "x";
+    }
 
     public static int RedSouls
     {

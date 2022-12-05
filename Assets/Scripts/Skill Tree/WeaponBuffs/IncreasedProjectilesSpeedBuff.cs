@@ -11,6 +11,11 @@ public class IncreasedProjectilesSpeedBuff : IWeaponBuff
 
     public void ApplyOnProjectile(ProjectileController projectileController)
     {
-        projectileController.ChangeSpeed(projectileController.GetSpeed() + 5);
+        projectileController.ChangeSpeed(projectileController.GetSpeed() + 5f);
+    }
+
+    public void ApplyOnPistol(PistolController pistolController)
+    {
+        return;
     }
 }

@@ -25,9 +25,29 @@ public class ProjectileController : MonoBehaviour
         this.speed = speed;
     }
 
+    public void ChangeDamage(int damage)
+    {
+        this.damage = damage;
+    }
+
+    public void ChangeRange(float lifeTime)
+    {
+        this.lifeTime = lifeTime;
+    }
+
+    public int GetDamage()
+    {
+        return damage;
+    }
+
     public float GetSpeed()
     {
         return speed;
+    }
+
+    public float GetRange()
+    {
+        return lifeTime;
     }
 
     public void ApplyOnHitBuffs(GameObject target)

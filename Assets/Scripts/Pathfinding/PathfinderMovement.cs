@@ -45,6 +45,16 @@ public class PathfinderMovement : MonoBehaviour
         InvokeRepeating("GeneratePath", 0f, 0.5f);
     }
 
+    public void ChangeSpeed(float newspeed)
+    {
+        speed = newspeed;
+    }
+
+    public float GetSpeed()
+    {
+        return speed;
+    }
+
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, LayerMask.GetMask("Obstacle"));

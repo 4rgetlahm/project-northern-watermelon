@@ -10,7 +10,7 @@ public class PistolBleedMkOne : Skill
         SkillType.PistolOnHit,
         "Pistol Bleed Mk. One",
         "Bleed enemies with your pistol. 1 Damage per second for 3 seconds.",
-        new SkillCost(1, 0, 0, 0, 0))
+        new SkillCost(0, 0, 0, 0, 0))
     {
         Id = BaseSkillId;
         WeaponBuff = new BleedWeaponBuff();

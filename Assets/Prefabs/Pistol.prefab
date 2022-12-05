@@ -185,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 2023158346040027245, guid: eb45ba670c029064cb9f60f33cef139a, type: 3}
   projectileSpawnPoint: {fileID: 4006410881001465466}
-  fireRate: 0.1
+  fireRate: 100
   anim: {fileID: 1272689906082066748}
   src: {fileID: 0}
   shoot: {fileID: 8300000, guid: ec834482e2d224a4d850180cd2f3e0df, type: 3}
