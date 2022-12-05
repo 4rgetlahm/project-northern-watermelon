@@ -6,4 +6,5 @@ public interface IWeaponBuff
 {
     void ApplyOnHit(GameObject target);
     void ApplyOnProjectile(ProjectileController projectileController);
+    void ApplyOnPistol(PistolController pistolController);
 }

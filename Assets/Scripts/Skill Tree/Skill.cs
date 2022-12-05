@@ -10,7 +10,7 @@ public enum SkillType
     AssaultRifleOnHit
 }
 
-public class Skill
+public class Skill : MonoBehaviour
 {
     public int Id { get; protected set; }
     public string Name { get; set; }

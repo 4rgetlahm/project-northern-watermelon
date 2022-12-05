@@ -25,6 +25,16 @@ public class ProjectileController : MonoBehaviour
         this.speed = speed;
     }
 
+    public void ChangeDamage(float speed)
+    {
+        this.speed = speed;
+    }
+
+    public int GetDamage()
+    {
+        return damage;
+    }
+
     public float GetSpeed()
     {
         return speed;

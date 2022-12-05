@@ -39,7 +39,7 @@ public class HealthController : MonoBehaviour
         //audio
         src = gameObject.GetComponent<AudioSource>();
 
-        canvasTransform = GameObject.Find("Canvas").transform;
+        canvasTransform = GameObject.Find("HealthUI").transform;
         UpdateHealth();
     }
 

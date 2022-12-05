@@ -671,6 +671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteHandler: {fileID: 4816362805413033535}
+  script: {fileID: 7644634505381950749}
 --- !u!114 &4620013650115626179
 MonoBehaviour:
   m_ObjectHideFlags: 0

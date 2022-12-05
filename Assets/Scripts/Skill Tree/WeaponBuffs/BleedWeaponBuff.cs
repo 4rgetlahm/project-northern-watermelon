@@ -25,4 +25,9 @@ public class BleedWeaponBuff : IWeaponBuff
     {
         return;
     }
+
+    public void ApplyOnPistol(PistolController pistolController)
+    {
+        return;
+    }
 }

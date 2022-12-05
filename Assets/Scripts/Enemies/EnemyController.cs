@@ -7,6 +7,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private MultipleSpriteHandler spriteHandler;
     private EnemyHealth healthController;
+    [SerializeField]
+    public PathfinderMovement script;
+
+    private float timeStart = 0;
+
+    private bool slowed = false;
 
     void Start()
     {
@@ -17,6 +23,26 @@ public class EnemyController : MonoBehaviour
     {
         StartCoroutine(HitAnimation());
         healthController.Damage(damage);
+    }
+
+    public void SlowDown(float time)
+    {
+        timeStart = time;
+        if(!slowed)
+        {
+            slowed = true;
+            script.ChangeSpeed(script.GetSpeed() * 0.5f);
+        }
+        
+    }
+    public void GetSpeed(float time)
+    {
+        if(time - timeStart  >= 2f)
+        {
+            script.ChangeSpeed(script.GetSpeed() * 2f);
+            slowed = false;
+        }
+
     }
 
     IEnumerator HitAnimation()
