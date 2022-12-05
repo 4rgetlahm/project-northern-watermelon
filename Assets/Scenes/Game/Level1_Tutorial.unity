@@ -309,7 +309,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 288d688c389c6474a8e5eeea75c89700, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9f31e4dca9d47e3499e85949c8330621, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2356,7 +2356,7 @@ PrefabInstance:
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: boughtIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 67251b3397a5168408ef94e94aab4030, type: 3}
+      objectReference: {fileID: 21300000, guid: 39e5546517f6933489f8e452f23b8ab7, type: 3}
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: normalIcon
       value: 
@@ -5119,7 +5119,7 @@ PrefabInstance:
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: boughtIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 67251b3397a5168408ef94e94aab4030, type: 3}
+      objectReference: {fileID: 21300000, guid: 39e5546517f6933489f8e452f23b8ab7, type: 3}
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: normalIcon
       value: 
@@ -7014,7 +7014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 288d688c389c6474a8e5eeea75c89700, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 239931c7a5728cf418bd536b5e5c4b9b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8624,7 +8624,7 @@ PrefabInstance:
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: boughtIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 67251b3397a5168408ef94e94aab4030, type: 3}
+      objectReference: {fileID: 21300000, guid: 39e5546517f6933489f8e452f23b8ab7, type: 3}
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: normalIcon
       value: 
@@ -8864,7 +8864,7 @@ PrefabInstance:
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: boughtIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 67251b3397a5168408ef94e94aab4030, type: 3}
+      objectReference: {fileID: 21300000, guid: 39e5546517f6933489f8e452f23b8ab7, type: 3}
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: normalIcon
       value: 
@@ -14001,7 +14001,7 @@ PrefabInstance:
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: boughtIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 67251b3397a5168408ef94e94aab4030, type: 3}
+      objectReference: {fileID: 21300000, guid: 39e5546517f6933489f8e452f23b8ab7, type: 3}
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: normalIcon
       value: 
@@ -14030,6 +14030,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1498494729548645875, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9f31e4dca9d47e3499e85949c8330621, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
 --- !u!224 &1861288455 stripped
@@ -33023,7 +33027,7 @@ PrefabInstance:
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: boughtIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 67251b3397a5168408ef94e94aab4030, type: 3}
+      objectReference: {fileID: 21300000, guid: 39e5546517f6933489f8e452f23b8ab7, type: 3}
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: normalIcon
       value: 
@@ -33344,7 +33348,7 @@ PrefabInstance:
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: boughtIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 67251b3397a5168408ef94e94aab4030, type: 3}
+      objectReference: {fileID: 21300000, guid: 39e5546517f6933489f8e452f23b8ab7, type: 3}
     - target: {fileID: 1498494728482033431, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: normalIcon
       value: 
@@ -33377,6 +33381,10 @@ PrefabInstance:
       propertyPath: deactivatedIcon
       value: 
       objectReference: {fileID: 21300000, guid: 9f59bf6aa4aa75145ac6b2338da32d66, type: 3}
+    - target: {fileID: 1498494729548645875, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 239931c7a5728cf418bd536b5e5c4b9b, type: 3}
     - target: {fileID: 1498494729594928181, guid: eb52e6c51db070c4482a697db26bcbc4, type: 3}
       propertyPath: m_Sprite
       value: 
