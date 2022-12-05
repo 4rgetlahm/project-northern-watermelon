@@ -9,7 +9,7 @@ public class PistolController : MonoBehaviour, IWeaponController
     [SerializeField]
     private Transform projectileSpawnPoint;
     [SerializeField]
-    private float fireRate;
+    private float fireRate = 0.4f;
     [SerializeField]
     private Animator anim;
     private float lastFireTime = 0f;
@@ -71,10 +71,10 @@ public class PistolController : MonoBehaviour, IWeaponController
         float speedup = 0;
         foreach (IWeaponBuff buff in buffs)
         {
-            speedup += 0.01f;
+            speedup += 0.03f;
             
         }
-        Debug.Log("speedup="+buffs.Capacity);
+        //Debug.Log("speedup="+buffs.Capacity);
         return speedup;
     }
 }

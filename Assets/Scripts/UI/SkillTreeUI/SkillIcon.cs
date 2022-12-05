@@ -58,7 +58,8 @@ public class SkillIcon : MonoBehaviour
             isActivated = true;
             return;
         }
-        
+
+        currentSprite.sprite = deactivatedIcon;
     }
 
     public void PressSkillButton()
