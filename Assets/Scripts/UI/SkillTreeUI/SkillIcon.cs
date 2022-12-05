@@ -89,6 +89,7 @@ public class SkillIcon : MonoBehaviour
         }
 
         upgradeButton.SetActive(true);
+        upgradeButton.GetComponentInChildren<Button>().onClick.RemoveAllListeners();
         upgradeButton.GetComponentInChildren<Button>().onClick.AddListener(delegate { skillManager.BuySkill(); });
     }
 }

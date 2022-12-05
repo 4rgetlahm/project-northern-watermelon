@@ -831,7 +831,6 @@ MonoBehaviour:
   triggerRadius: 15
   attackRadius: 1.5
   delayBetweenAttacks: 1
-  attackPoint: {fileID: 7815418813738167898}
 --- !u!114 &7813290833378881151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteHandler: {fileID: 4816362805413033535}
+  script: {fileID: 7644634505381950749}
 --- !u!114 &4620013650115626179
 MonoBehaviour:
   m_ObjectHideFlags: 0

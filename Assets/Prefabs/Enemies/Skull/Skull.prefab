@@ -401,7 +401,6 @@ MonoBehaviour:
   triggerRadius: 15
   attackRadius: 1.5
   delayBetweenAttacks: 1
-  attackPoint: {fileID: 7815418813738167898}
 --- !u!114 &7813290833378881151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,6 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteHandler: {fileID: 4816362805413033535}
+  script: {fileID: 7644634505381950749}
 --- !u!114 &4620013650115626179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,10 +444,12 @@ MonoBehaviour:
   dropItemPrefab:
   - {fileID: 7587897401186364323, guid: 45090b83a7d4ff946bda0329e4284fb7, type: 3}
   - {fileID: 7587897401186364323, guid: c72f667973c3f4b4bb1a1ab2946954b9, type: 3}
+  - {fileID: 7587897401186364323, guid: 45090b83a7d4ff946bda0329e4284fb7, type: 3}
   chance:
   - 1
   - 0.2
-  maxQuantity: 0500000001000000
+  - 1
+  maxQuantity: 010000000100000003000000
 --- !u!1 &8351040028068439569
 GameObject:
   m_ObjectHideFlags: 0

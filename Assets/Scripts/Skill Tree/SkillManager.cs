@@ -14,12 +14,12 @@ public class SkillManager : MonoBehaviour
     {
         if (!HasPrerequisites(skill))
         {
-            Dialog.Show("Skill not available", "You do not have the prerequisites for this skill", "Ok", null, "Ok", null);
+            //Dialog.Show("Skill not available", "You do not have the prerequisites for this skill", "Ok", null, "Ok", null);
             return;
         }
         if (!skill.Cost.CanAfford())
         {
-            Dialog.Show("Not enough currency", "You do not have enough currency to buy this skill", "Ok", null, "Ok", null);
+            //Dialog.Show("Not enough currency", "You do not have enough currency to buy this skill", "Ok", null, "Ok", null);
             //EIK TU NX ARNAI BENT ISTESTUOK SAVO SISTEMA
             return;
         }
@@ -29,6 +29,7 @@ public class SkillManager : MonoBehaviour
         CurrencyController.Eyece -= skill.Cost.costEyece;
         CurrencyController.FingerBurn -= skill.Cost.costFingerBurn;
 
+        Debug.Log("BOUGHT="+skill.Name);
         SkillTree.AddSkill(skill);
         upgradeButton.SetActive(false);
         //Dialog.Show("Skill bought", "You have bought the skill " + skill.Name, "Ok", null, "Ok", null);
