@@ -70,6 +70,9 @@ TagManager:
   - name: Crawler
     uniqueID: 2884065597
     locked: 0
+  - name: Boss
+    uniqueID: 2376734227
+    locked: 0
   - name: Bullet
     uniqueID: 736751395
     locked: 0
