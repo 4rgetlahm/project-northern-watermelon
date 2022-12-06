@@ -10,8 +10,12 @@ public class OpenTutorial : MonoBehaviour
     [SerializeField]
     public GameObject otherTutorial;
 
+    public bool close = true;
+
     public float waitFor = 2f;
     private float startTime;
+
+    private bool activated = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +25,9 @@ public class OpenTutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(startTime + waitFor <= Time.time)
+        if(!activated && startTime + waitFor <= Time.time)
         {
+            activated = true;
             canvas.SetActive(true);
             Time.timeScale = 0f;
         }
@@ -30,13 +35,15 @@ public class OpenTutorial : MonoBehaviour
 
     public void Close()
     {
-        canvas.SetActive(false);
+        if(close)
+            canvas.SetActive(false);
         Time.timeScale = 1f;
         
         if(otherTutorial != null)
             otherTutorial.SetActive(true);
 
-        this.gameObject.SetActive(false);
+        if(close)
+            this.gameObject.SetActive(false);
 
     }
 }

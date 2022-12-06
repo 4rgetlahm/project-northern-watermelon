@@ -46,11 +46,20 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Platform
+    uniqueID: 604763315
+    locked: 0
   - name: EnvironemtBack
     uniqueID: 2823480557
     locked: 0
+  - name: Particles
+    uniqueID: 2761194637
+    locked: 0
   - name: Player
     uniqueID: 1237782787
+    locked: 0
+  - name: EnvironmentMiddle
+    uniqueID: 1143112919
     locked: 0
   - name: Maggot
     uniqueID: 2573080521
@@ -61,8 +70,8 @@ TagManager:
   - name: Crawler
     uniqueID: 2884065597
     locked: 0
-  - name: EnvironmentMiddle
-    uniqueID: 1143112919
+  - name: Bullet
+    uniqueID: 736751395
     locked: 0
   - name: EnvironmentFront
     uniqueID: 4131612437
