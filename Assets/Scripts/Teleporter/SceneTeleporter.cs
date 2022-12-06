@@ -8,11 +8,16 @@ public class SceneTeleporter : MonoBehaviour
     [SerializeField]
     private string sceneName;
 
+    public Animator fade;
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+    private IEnumerator OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            fade.SetTrigger("FadeIn");
+            yield return new WaitForSeconds(1f);
+
             SceneManager.LoadScene(sceneName);
         }
     }
