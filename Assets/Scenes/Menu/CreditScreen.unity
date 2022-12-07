@@ -688,9 +688,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "CREDITS\n\r\nAudio\r\nAugustina Petraityt\u0117 \r\nArvydas Venskus \r\n\r\nGraphics\r\nEmilija
-    Svirskyt\u0117\r\n\r\nScripts\r\nArnas Verpe\u010Dinskas\r\n\nAssets\r\nSpooky
+    Svirskyt\u0117\r\n\r\nScripts\r\nArnas Verpe\u010Dinskas\r\n\nAssets for graphics\nSpooky
     Dungeon - 2D Asset Pack\r\n300+ Flat GUI RPG Icons Pack\r\nGUI Kit Dark Geo\r\n2d
-    Weather Effects"
+    Weather Effects\n\nAssets for audio\nwww.storyblocks.com\r\nwww.quicksounds.com\r\nwww.pixabay.com"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
