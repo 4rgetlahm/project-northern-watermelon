@@ -18,7 +18,7 @@ public class SceneTeleporter : MonoBehaviour
             fade.SetTrigger("FadeIn");
             yield return new WaitForSeconds(1f);
 
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
         }
     }
 }

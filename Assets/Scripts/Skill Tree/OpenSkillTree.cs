@@ -9,10 +9,12 @@ public class OpenSkillTree : MonoBehaviour
     private GameObject SkillTreeMeniu;
     [SerializeField]
     private GameObject livesUI;
+
+    public bool isDead = false;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !isDead)
         {
             if (SkillTreeMeniu.activeSelf)
             {

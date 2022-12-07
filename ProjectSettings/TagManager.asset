@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Game Master
   - Drop
+  - Boss
   layers:
   - Default
   - TransparentFX

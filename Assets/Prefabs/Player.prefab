@@ -276,6 +276,7 @@ MonoBehaviour:
   src: {fileID: 0}
   damage: {fileID: 8300000, guid: 2ab1c7519c0f4bb4fbfdeb4142ad4bf9, type: 3}
   death: {fileID: 8300000, guid: 87cffebf00ce7954bb3a3903433f715f, type: 3}
+  canDie: 1
 --- !u!82 &955350594693613802
 AudioSource:
   m_ObjectHideFlags: 0

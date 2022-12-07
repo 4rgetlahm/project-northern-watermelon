@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MusicControlScript : MonoBehaviour
 {
+    /*
     public static MusicControlScript instance; // Creates a static varible for a MusicControlScript instance
 
-    private void Awake() // Runs before void Start()
+    private void Start() // Runs before void Start()
     {
-        DontDestroyOnLoad(this.gameObject); // Don't destroy this gameObject when loading different scenes
+        //DontDestroyOnLoad(this.gameObject); // Don't destroy this gameObject when loading different scenes
 
         if (instance == null) // If the MusicControlScript instance variable is null
         {
@@ -19,4 +20,5 @@ public class MusicControlScript : MonoBehaviour
             Destroy(gameObject); // Destroy this gameObject
         }
     }
+    */
 }

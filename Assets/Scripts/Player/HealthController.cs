@@ -20,6 +20,18 @@ public class HealthController : MonoBehaviour
     public AudioSource src;
     public AudioClip damage, death;
 
+    public GameObject endScreen;
+
+    private BoxCollider2D collider;
+    public GameObject blood;
+    public GameObject sprite;
+    private MovementController script;
+    private Rigidbody2D body;
+
+    public OpenSkillTree skillTree;
+
+    public bool canDie = true;
+
     public int Health
     {
         get { return _health; }
@@ -36,6 +48,9 @@ public class HealthController : MonoBehaviour
 
     void Start()
     {
+        body = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
+        script = GetComponent<MovementController>();
         //audio
         src = gameObject.GetComponent<AudioSource>();
 
@@ -76,11 +91,25 @@ public class HealthController : MonoBehaviour
 
     private void Death()
     {
+        if (!canDie)
+            return;
+
+
+
         //audio
         src.clip = death;
         src.Play();
 
-        Debug.Log("Death");
+        //Debug.Log("Death");
+
+        Instantiate(blood, transform.position, Quaternion.identity);
+        body.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+        collider.enabled = false;
+        script.enabled = false;
+        sprite.SetActive(false);
+        endScreen.SetActive(true);
+
+        skillTree.isDead = true;
     }
 
 }

@@ -15,7 +15,7 @@ public class DamageTakenArgs
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField]
-    private int health = 3;
+    public int health = 3;
     [SerializeField]
     public GameObject blood;
 

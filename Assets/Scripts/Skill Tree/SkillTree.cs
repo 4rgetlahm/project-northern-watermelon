@@ -26,6 +26,11 @@ public static class SkillTree
         return Skills;
     }
 
+    public static void RemoveAllSkills()
+    {
+        Skills = new List<Skill>();
+    }
+
     public static List<IWeaponBuff> GetWeaponBuffs(SkillType skillType)
     {
         List<IWeaponBuff> weaponBuffs = new List<IWeaponBuff>();

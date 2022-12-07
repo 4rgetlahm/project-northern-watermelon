@@ -3,24 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ChangeScenes : MonoBehaviour
+public class EndingScreen : MonoBehaviour
 {
     [SerializeField]
     private string sceneName;
 
     public Animator fade;
 
-    public void ChangeScene()
+    public float wait = 1f;
+
+    public EraseAchievements script;
+    // Start is called before the first frame update
+    void Start()
     {
         StartCoroutine(ChangeSceneWait());
     }
 
     public IEnumerator ChangeSceneWait()
     {
-        //Debug.Log("huh");
+        yield return new WaitForSeconds(wait);
         fade.SetTrigger("FadeIn");
-        yield return new WaitForSeconds(1f);
+        script.Erase();
 
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneName);
     }
 }

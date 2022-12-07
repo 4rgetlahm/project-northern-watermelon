@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu/EndingScreen.unity
     guid: f20d191b155605047af4d4b0d2093ada
+  - enabled: 1
+    path: Assets/Scenes/Game/Level3_Boss.unity
+    guid: ec792210191a54045a9b1d762e9b6900
   m_configObjects: {}
