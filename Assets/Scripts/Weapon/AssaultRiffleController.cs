@@ -16,9 +16,12 @@ public class AssaultRiffleController : MonoBehaviour, IWeaponController
     [SerializeField]
     private int damage = 1;
     private float lastFireTime = 0f;
+    private AudioSource shoot;
 
     public void Fire()
     {
+        //audio
+        shoot = GetComponent<AudioSource>();
         if (Time.time - lastFireTime < fireRate)
         {
             return;
@@ -50,6 +53,7 @@ public class AssaultRiffleController : MonoBehaviour, IWeaponController
         lineRenderer.enabled = true;
         yield return new WaitForSeconds(0.1f);
         lineRenderer.enabled = false;
+        shoot.Play();
     }
 
     public void ApplyOnHitEffects(GameObject target)

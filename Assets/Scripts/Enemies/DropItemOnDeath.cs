@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DropItemOnDeath : MonoBehaviour
 {
+    //audio
+    private AudioSource src;
+    public AudioClip drop;
     /*
     [SerializeField]
     private GameObject dropItemPrefab;
@@ -21,6 +24,8 @@ public class DropItemOnDeath : MonoBehaviour
 
     void Start()
     {
+        //audio
+        src = GetComponent<AudioSource>();
         EnemyHealth enemyHealth = GetComponent<EnemyHealth>();
         if (enemyHealth != null)
         {
@@ -35,7 +40,7 @@ public class DropItemOnDeath : MonoBehaviour
     private void DropItem()
     {
         int size = dropItemPrefab.Capacity;
-
+        
         for(int i=0; i<size; i++)
         {
             //calculate if dropped
@@ -49,5 +54,8 @@ public class DropItemOnDeath : MonoBehaviour
                 }
             }
         }
+        //audio
+        src.clip = drop;
+        //src.Play();
     }
 }

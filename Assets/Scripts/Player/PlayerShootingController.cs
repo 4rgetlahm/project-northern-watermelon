@@ -9,6 +9,7 @@ public class PlayerShootingController : MonoBehaviour
     private List<GameObject> weapons = new List<GameObject>();
     private GameObject equippedWeapon;
     private IWeaponController equippedWeaponController;
+    private AudioSource shoot;
 
     private bool isShooting = false;
 
@@ -16,6 +17,7 @@ public class PlayerShootingController : MonoBehaviour
     {
         LoadWeapons();
         SetActiveWeapon(weapons[0]);
+        shoot = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -89,5 +91,6 @@ public class PlayerShootingController : MonoBehaviour
             equippedWeaponController = FindActiveWeaponController();
         }
         equippedWeaponController.Fire();
+        shoot.Play();
     }
 }
