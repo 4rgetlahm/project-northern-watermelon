@@ -14,4 +14,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game/Level2_Dungeon.unity
     guid: 6fc173077ad50fe4786f9cd513782b4d
+  - enabled: 1
+    path: Assets/Scenes/Menu/GameStart.unity
+    guid: 30227eea2320f2c4ca2aceb7b918668d
+  - enabled: 1
+    path: Assets/Scenes/Menu/CreditScreen.unity
+    guid: 87da564ec8b69cd4cb1b921b30c3b3ab
+  - enabled: 1
+    path: Assets/Scenes/Menu/EndingScreen.unity
+    guid: f20d191b155605047af4d4b0d2093ada
+  - enabled: 1
+    path: Assets/Scenes/Game/Level3_Boss.unity
+    guid: ec792210191a54045a9b1d762e9b6900
   m_configObjects: {}

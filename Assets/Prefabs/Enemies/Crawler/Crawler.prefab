@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410901699
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: fd0a6d9706ed8054a8d94e6620f01557, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410901699
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: bec2b5f4aaf0fd74b9770da143c09675, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -321,7 +321,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410901699
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: c57df46bfa366cc48b51829c24889612, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -405,7 +405,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410901699
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: d6809f17158c536458d6bea4f41cf391, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -489,7 +489,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410901699
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 412e44ee27a00c84bb2e1dcd8d45c72d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -573,7 +573,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410901699
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e254b346dc1925448924643f27c459cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -657,7 +657,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410901699
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 77c67a5c267f1d7469f7153888388fa6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f94d994dd6e32a49abd01a513d3a5ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
   canJump: 0
   jumpForce: 5
 --- !u!50 &7644634505381950745
@@ -828,7 +828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75caec2f827b4fe4c8a2deeb9ede2b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerRadius: 15
+  triggerRadius: 10
   attackRadius: 1.5
   delayBetweenAttacks: 1
 --- !u!114 &7813290833378881151
@@ -953,7 +953,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410901699
-  m_SortingLayer: 5
+  m_SortingLayer: 8
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 77bad8c2a0d1f3c4b9a3e619dd264ed8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

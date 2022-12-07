@@ -70,7 +70,7 @@ public class CurrencyController : MonoBehaviour
         set { fingerBurn = value; }
     }
 
-    public void ResetCurrency()
+    public static void ResetCurrency()
     {
         redSouls = 0;
         blueSouls = 0;
