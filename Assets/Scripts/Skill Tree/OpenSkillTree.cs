@@ -10,12 +10,14 @@ public class OpenSkillTree : MonoBehaviour
     [SerializeField]
     private GameObject livesUI;
     private AudioSource open;
+
+    public bool isDead = false;
     // Update is called once per frame
     void Update()
     {
         //audio
         open = GetComponent<AudioSource>();
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !isDead)
         {
             //audio
             if (SkillTreeMeniu.activeSelf)

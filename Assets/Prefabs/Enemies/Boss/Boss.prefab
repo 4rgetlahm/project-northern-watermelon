@@ -1433,6 +1433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be11ccf1fdcd82e42bee19562fe9fe52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drop: {fileID: 0}
   dropItemPrefab:
   - {fileID: 7587897401186364323, guid: 45090b83a7d4ff946bda0329e4284fb7, type: 3}
   - {fileID: 7587897401186364323, guid: 45090b83a7d4ff946bda0329e4284fb7, type: 3}
@@ -1457,12 +1458,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7644634505381950747}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3901bef932af93949b498688792a10ad, type: 3}
+  m_audioClip: {fileID: 8300000, guid: de4771ef16604c144b8d9518bbc25c5d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.615
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1558,8 +1559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4261f748403dc3f4ea88e73cfa3b4550, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  script: {fileID: 0}
   canvas: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!1 &7686953997308090834
 GameObject:
   m_ObjectHideFlags: 0

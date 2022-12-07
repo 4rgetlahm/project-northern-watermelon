@@ -11,9 +11,12 @@ public class MaggotAnimationController : MonoBehaviour
     [SerializeField]
     AI ai;
 
+    private AudioSource src;
+
     void Start()
     {
         ai.OnAIStateChange += OnStateChange;
+        src = GetComponent<AudioSource>();
     }
 
     void OnStateChange(AIStateArgs args)
@@ -26,6 +29,7 @@ public class MaggotAnimationController : MonoBehaviour
 
     void Chase()
     {
+        src.Play();
         animator.SetBool("Attack", false);
         animator.SetBool("Idle", false);
         animator.SetBool("Chase", true);

@@ -91,6 +91,6 @@ public class PlayerShootingController : MonoBehaviour
             equippedWeaponController = FindActiveWeaponController();
         }
         equippedWeaponController.Fire();
-        shoot.Play();
+        //shoot.Play();
     }
 }

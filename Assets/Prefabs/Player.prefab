@@ -276,6 +276,10 @@ MonoBehaviour:
   src: {fileID: 0}
   damage: {fileID: 8300000, guid: 2ab1c7519c0f4bb4fbfdeb4142ad4bf9, type: 3}
   death: {fileID: 8300000, guid: 87cffebf00ce7954bb3a3903433f715f, type: 3}
+  endScreen: {fileID: 0}
+  blood: {fileID: 0}
+  sprite: {fileID: 0}
+  skillTree: {fileID: 0}
   canDie: 1
 --- !u!82 &955350594693613802
 AudioSource:
@@ -1394,6 +1398,10 @@ PrefabInstance:
     - target: {fileID: 6154161193747522206, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6599074894134636351, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}
+      propertyPath: m_Volume
+      value: 0.609
       objectReference: {fileID: 0}
     - target: {fileID: 6989285600923119053, guid: 6dd0f597b9a197a438fd93a99e8c60be, type: 3}
       propertyPath: m_Layer

@@ -15,6 +15,6 @@ public class DestroyParticle : MonoBehaviour
     void Update()
     {
         Destroy(gameObject, 2f);
-        drop.Play();
+        //drop.Play();
     }
 }
